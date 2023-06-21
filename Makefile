@@ -7,8 +7,9 @@ all: C-Locate C-Locate-Function
 C-Locate: ./compiler.o ./linker.o ./main.o ./parser.o ./loader.o
 	$(CC) $(CFLAGS) -o C-Locate ./compiler.o ./linker.o ./main.o ./parser.o ./loader.o
 
-C-Locate-Function:
-	clang++-11 -std=c++17 main2.cpp `llvm-config-11 --cxxflags --ldflags --libs --system-libs` -lclangTooling -lclangASTMatchers -lclangFrontend -lclangSerialization -lclangDriver -lclangParse -lclangSema -lclangEdit -lclangAnalysis -lclangAST -lclangLex -lclangBasic -o C-Locate-Function
+C-Locate-Function: ./source/main2.cpp
+	clang++-11 -std=c++17 ./source/main2.cpp `llvm-config-11 --cxxflags --ldflags --libs --system-libs` -lclangTooling -lclangASTMatchers -lclangFrontend -lclangSerialization -lclangDriver -lclangParse -lclangSema -lclangEdit -lclangAnalysis -lclangAST -lclangLex -lclangBasic -o C-Locate-Function
+
 
 compiler.o: ./source/compiler.cpp ./include/compiler.h
 	$(CC) $(CFLAGS) -c ./source/compiler.cpp

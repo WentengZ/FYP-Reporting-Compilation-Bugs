@@ -1,6 +1,0 @@
-#define MODULE_DIR "/home/alan/FYP-Reporting-Compilation-Bugs/test/testcase4/zsh-5.9/build/lib/zsh/5.9"
-#define SITESCRIPT_DIR "/home/alan/FYP-Reporting-Compilation-Bugs/test/testcase4/zsh-5.9/build/share/zsh/scripts"
-#define SCRIPT_DIR "/home/alan/FYP-Reporting-Compilation-Bugs/test/testcase4/zsh-5.9/build/share/zsh/5.9/scripts"
-#define SITEFPATH_DIR "/home/alan/FYP-Reporting-Compilation-Bugs/test/testcase4/zsh-5.9/build/share/zsh/site-functions"
-#define FIXED_FPATH_DIR "/usr/local/share/zsh/site-functions"
-#define FPATH_DIR "/home/alan/FYP-Reporting-Compilation-Bugs/test/testcase4/zsh-5.9/build/share/zsh/5.9/functions"

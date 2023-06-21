@@ -49,8 +49,5 @@ __attribute__((aligned(16))) unsigned char data_length40[40] = {
     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x03, 0x03, 0x03, 0x03};
 
 int main() {
-    // std::cout << (int)CheckPadding(data_length40, sizeof(data_length40)) << std::endl;
     std::cout << (int)CheckPadding(data_length41, sizeof(data_length41)) << std::endl;
-    // std::cout << (int)CheckPaddingNoVec(data_length40, sizeof(data_length40)) << std::endl;
-    // std::cout << (int)CheckPaddingNoVec(data_length41, sizeof(data_length41)) << std::endl;
 }

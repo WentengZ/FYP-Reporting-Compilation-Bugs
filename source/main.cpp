@@ -464,14 +464,14 @@ int main(int argc, char *argv[]){
     }
 
     // Output all the Result
-    std::ofstream outputFile("An_output_haha.txt", std::ios::trunc);
+    std::ofstream outputFile("input_to_2nd_file.txt", std::ios::trunc);
     outputFile.close();
     std::cout << "==============================================" << std::endl;
     
     for (int i = 0; i < buggy_files.size(); i++) {
         std::cout << "buggy files are \n" << buggy_files[i] << std::endl;
 
-        std::ofstream outputFile("An_output_haha.txt", std::ios::app); 
+        std::ofstream outputFile("input_to_2nd_file.txt", std::ios::app); 
         if (outputFile.is_open()) { 
             outputFile << "buggy_file=" << buggy_files[i] << std::endl << std::endl;
             outputFile << "buggy_compiler_command=" << buggy_files_compile_commands[i] << std::endl << std::endl;

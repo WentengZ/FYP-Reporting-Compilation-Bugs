@@ -390,7 +390,8 @@ int main(int argc, char *argv[]){
 
 //=============================Functionality 3=================================
 //  Locate the git commit.
-    int previous_id_index = -1;
+    int commit_upper_bound = -1;
+    int commit_lower_bound = -1;
     int current_id_index = -1;
     std::vector<std::string> commit_IDs;
     std::vector<bool> commits_result;
@@ -419,8 +420,10 @@ int main(int argc, char *argv[]){
 
         bool found = false;
         bool go_up_git = false;
-        previous_id_index = commit_IDs.size(); 
+
+        commit_upper_bound = commit_IDs.size(); 
         current_id_index = commit_IDs.size() / 2;
+        commit_lower_bound = 0;
         while (!found){
             std::string checkout_id_command = "git checkout " + 
                                               commit_IDs[current_id_index];
@@ -442,14 +445,16 @@ int main(int argc, char *argv[]){
                 commits_result[current_id_index] = true;
                 go_up_git = false;
             }
-            int temp = current_id_index;
+       
             if (go_up_git){
-                current_id_index = (current_id_index + previous_id_index) / 2;
+                commit_lower_bound = current_id_index;
+                current_id_index = (current_id_index + commit_upper_bound) / 2;
             } else {
-                current_id_index = current_id_index / 2;
+                commit_upper_bound = current_id_index;
+                current_id_index = (current_id_index + commit_lower_bound) / 2;
             }
-            previous_id_index = temp;
-            if (abs(current_id_index - previous_id_index) < 2) {
+            
+            if (abs(commit_upper_bound - commit_lower_bound) < 2) {
                 found = true;
             }
             cd(parser.get_buggy_compiler_git_directory().c_str());
@@ -464,14 +469,14 @@ int main(int argc, char *argv[]){
     }
 
     // Output all the Result
-    std::ofstream outputFile("input_to_2nd_file.txt", std::ios::trunc);
+    std::ofstream outputFile("input_to_2nd_tool.txt", std::ios::trunc);
     outputFile.close();
     std::cout << "==============================================" << std::endl;
     
     for (int i = 0; i < buggy_files.size(); i++) {
         std::cout << "buggy files are \n" << buggy_files[i] << std::endl;
 
-        std::ofstream outputFile("input_to_2nd_file.txt", std::ios::app); 
+        std::ofstream outputFile("input_to_2nd_tool.txt", std::ios::app); 
         if (outputFile.is_open()) { 
             outputFile << "buggy_file=" << buggy_files[i] << std::endl << std::endl;
             outputFile << "buggy_compiler_command=" << buggy_files_compile_commands[i] << std::endl << std::endl;
@@ -494,21 +499,15 @@ int main(int argc, char *argv[]){
     std::cout << "==============================================" << std::endl;
     
     std::cout << "buggy commits are between\n";
-    std::cout << previous_id_index << " and " << current_id_index << std::endl;
+    std::cout << commit_lower_bound << " and " << commit_upper_bound << std::endl;
 
     std::cout << "==============================================" << std::endl;
-    for (int i = 0; i < commit_IDs.size(); i++){
+    for (int i = commit_lower_bound; i < commit_upper_bound; i++){
         std::cout << commit_IDs[i] << std::endl;
         std::cout << commits_result[i] << std::endl;
     }
 
     std::cout << "==============================================" << std::endl;
-
-    // for (int i = 0; i < for_debug_only.size(); i++){
-    //     std::cout << i << ":  ";
-    //     std::cout << for_debug_only[i] << std::endl;
-    // }
-
 
     std::string romove_all_temp = "rm *.o && rm *.out && rm *.dump";
     std::system(romove_all_temp.c_str());

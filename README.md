@@ -22,7 +22,7 @@ cd test/testcase7/llvm-project-331fb804c96008bbceec8e5f305fc27f06d58ba6/
 
 mkdir build && cd build
 
-cmake -DLLVM_EXTERNAL_CLANG_SOURCE_DIR=../clang   ../llvm/
+cmake -DLLVM_EXTERNAL_CLANG_SOURCE_DIR=../clang  -DLLVM_TOOL_CLANG_BUILD=ON  ../llvm/
 
 make
 ```

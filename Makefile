@@ -1,6 +1,6 @@
 
-CC = g++
-CFLAGS =
+CC = clang++
+CFLAGS = -std=c++17
 
 all: C-Locate C-Locate-Function
 

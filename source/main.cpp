@@ -502,11 +502,13 @@ int main(int argc, char *argv[]){
     std::cout << commit_lower_bound << " and " << commit_upper_bound << std::endl;
 
     std::cout << "==============================================" << std::endl;
-    for (int i = commit_lower_bound; i < commit_upper_bound; i++){
-        std::cout << commit_IDs[i] << std::endl;
-        std::cout << commits_result[i] << std::endl;
+    if (commit_lower_bould != -1) {
+    
+        for (int i = commit_lower_bound; i < commit_upper_bound; i++){
+            std::cout << commit_IDs[i] << std::endl;
+            std::cout << commits_result[i] << std::endl;
+        }
     }
-
     std::cout << "==============================================" << std::endl;
 
     std::string romove_all_temp = "rm *.o && rm *.out && rm *.dump";

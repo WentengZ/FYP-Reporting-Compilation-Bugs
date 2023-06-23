@@ -256,7 +256,7 @@ int main(int argc, char *argv[]){
 // Get Maximum Optimization pass number
 
     std::string optibisect = " -mllvm -opt-bisect-limit=200";
-    int maxPassNumber=0;
+    int maxPassNumber=10000;
 
     for (int k = 0; k < buggy_files.size(); k++) {
         std::string file_directory = find_directory(parser.get_built_directory(), buggy_files_compile_commands[k]);

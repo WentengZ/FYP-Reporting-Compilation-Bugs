@@ -42,6 +42,7 @@ mkdir build && cd build
 # This should be a correct version of compiler.
 # only clang is supported in current implementation.
 # Basically any normal clang should work.
+
 export CC=clang
 
 ../configure

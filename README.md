@@ -11,7 +11,7 @@ Clone the project
 
 In root directory of FYP-Reporting-Compilation-Bugs
 
-build C-Locae and C-Locate-Function
+build C-Locate and C-Locate-Function
 ```
 make
 ```

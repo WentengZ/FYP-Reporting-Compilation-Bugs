@@ -262,7 +262,7 @@ int main(int argc, char *argv[]){
         std::string file_directory = find_directory(parser.get_built_directory(), buggy_files_compile_commands[k]);
         char* cwdir_temp = cwd(0, 0);
         cd(file_directory.c_str());
-        std::string clang_command = buggy_files_compile_commands[k] + optibisect + " &> input.txt";
+        std::string clang_command = buggy_files_compile_commands[k] + optibisect + " > input.txt";
         std::system(clang_command.c_str());
         cd (cwdir_temp);
     

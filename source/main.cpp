@@ -502,7 +502,7 @@ int main(int argc, char *argv[]){
     std::cout << commit_lower_bound << " and " << commit_upper_bound << std::endl;
 
     std::cout << "==============================================" << std::endl;
-    if (commit_lower_bould != -1) {
+    if (commit_lower_bound != -1) {
     
         for (int i = commit_lower_bound; i < commit_upper_bound; i++){
             std::cout << commit_IDs[i] << std::endl;
